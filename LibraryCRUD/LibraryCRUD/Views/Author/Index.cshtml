@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Author>
+
+@{
+    ViewData["Title"] = "Authors";
+}
+
+
+<h2>
+    <i class="bi bi-pen"></i>
+    Authors
+</h2>
+<hr />
+<a class="btn btn-primary" asp-action="Create">
+    <i class="bi bi-plus"></i>
+    Add New Author
+</a>
+
+
+<div class="mt-4">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            No Books Found!
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-3 row-cols-md-3 g-4">
+
+            @foreach (var author in Model)
+            {
+
+                <div class="col col-a mb-4">
+                    <div class="card card-a">
+                        <div class="card-img-top ">
+                            <img src="@($"data:image/*;base64,{Convert.ToBase64String((author.Image==null?ViewBag.image:author.Image))}")" class="card-img-top image" alt="@author.Name">
+                        </div>
+                        <div class="card-body card-body-a d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title">@author.Name</h5>
+                                <p class="card-text">@(author.Description.Length>60?$"{author.Description.Substring(0,60)}...see more":author.Description)</p>
+                            </div>
+
+                            <div class="mt-2 text-center">
+                                <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@author.Id">
+                                    <i class="bi bi-ticket-detailed"></i>
+                                    Details
+                                </a>
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@author.Id">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                </a>
+                                <a href="javascript:;" class="btn btn-danger js-delete" data-id="@author.Id">
+                                    <i class="bi bi-trash"></i>
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+@section Scripts{
+    <script>
+        //const { Toast } = require("../../wwwroot/lib/bootstrap/dist/js/bootstrap.bundle");
+
+        $(document).ready(function () {
+            $('.js-delete').on('click', function () {
+                var btn = $(this);
+                //var result = confirm('Are you sure that you need to delete this book');
+                bootbox.confirm({
+                    message: 'Are you sure that you need to delete this author',
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-outline-secondary'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: '/Author/Delete/' + btn.data('id'),
+                                success: function () {
+                                    btn.parents('.col').fadeOut();
+                                    toastr.success("Author deleted");
+                                },
+                                error: function () {
+                                    toastr.error('Something went wrong!');
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+}

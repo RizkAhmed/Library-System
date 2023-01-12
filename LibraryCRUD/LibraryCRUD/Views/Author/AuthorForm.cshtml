@@ -1,0 +1,81 @@
+﻿@model AuthorFormViewModel
+@{ 
+    ViewData["Title"] = (Model.Id > 0 ? "Edit Author" : "Add Author");
+}
+
+
+<h2>@(Model.Id > 0 ? "Edit" : "Add") Author</h2>
+<hr />
+<section class="row justify-content-between">
+    <div class="col-md-4">
+        <form method="post" asp-action=@(Model.Id > 0 ? "Edit" : "Create") enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label class="text-muted" asp-for="Name"></label>
+                <input type="text" class="form-control" asp-for="Name" maxlength="100" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group w-50">
+                <label class="text-muted" asp-for="DateOfBirth"></label>
+                @*<input type="date"  max="@DateTime.Today.Date"  class="form-control" asp-for="DateOfBirth" value="@($"{DateTime.Parse( Model.DateOfBirth).Year}-{DateTime.Parse( Model.DateOfBirth).Month}-{DateTime.Parse( Model.DateOfBirth).Day}")"/>*@
+                <div class="md-form md-outline input-with-post-icon datepicker" id="formatsSection">
+                    <input placeholder="Select date" asp-for="DateOfBirth" type="text" id="formats-example" class="form-control">
+                    <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                </div>
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label class="text-muted" asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description"maxlength="1500" rows="4" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" asp-for="Image" accept="image/x-png, image/jpeg, image/jpg" />
+                <label class="custom-file-label" asp-for="Image"></label>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4" >
+                <i class="bi bi-save"></i>
+                Save
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary mt-4">
+                <i class="bi bi-trash"></i>
+                Cancel
+            </a>
+        </form>
+        
+
+    </div>
+    <div class="col-md-4 ">
+        <div id="image-container" class="@(Model.Id>0?string.Empty:"d-none") ">
+            <img src="@(Model.Id>0?$"data:image/*;base64,{Convert.ToBase64String(Model.Image)}":string.Empty)" alt="Author image" class="img-thumbnail rep-cover" />
+        </div>
+    </div>
+</section>
+@section Scripts{ 
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");}
+    <script>
+        $(document).ready(function () {
+            $('#Image').on('change', function () {
+                var selectedFile = $(this).val().split('\\').pop();
+                $(this).siblings('label').text(selectedFile);
+
+                var coverContainer = $('#image-container');
+                var image = window.URL.createObjectURL(this.files[0]);
+
+                coverContainer.removeClass('d-none');
+                coverContainer.find('img').attr('src', image);
+
+            });
+            $('.datepicker').datepicker({
+                format: 'mm-dd-yyyy',
+                formatSubmit: 'mm/dd/yyyy',
+                hiddenPrefix: 'prefix__',
+                hiddenSuffix: '__suffix'
+            })
+        });
+    </script>
+    
+}

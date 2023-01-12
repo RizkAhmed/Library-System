@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Books";
+}
+
+
+<h2>
+    <i class="bi bi-book"></i>
+    Books
+</h2>
+<hr />
+<a class="btn btn-primary" asp-action="Create">
+    <i class="bi bi-plus"></i>
+    Add New Book
+</a>
+<div class="mt-4">
+
+    @if (!Model.Any())
+     {
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        No Books Found!
+    </div>
+     }
+     else
+     {
+        <div class="row">
+            @foreach (var book in Model)
+             {
+                <div class="col col-12">
+                    <div class="card mb-3" >
+                        <div class="row no-gutters">
+                            <div class="col-md-2 cover" style="background-image:url(data:image\/*;base64,@Convert.ToBase64String(book.Cover))"></div>
+                            <div class="col-md-10">
+                                <div class="card-body d-flex flex-column justify-content-between h-100" >
+                                    <div class="mb-2">
+                                        <h5 class="card-title">@book.Title (@book.Year)</h5>
+                                        <h6 class="card-subtitle text-muted mb-2">@book.Author.Name</h6>
+                                        <p class="card-text text-justify">@(book.Description.Length>300?$"{book.Description.Substring(0,300)} ... See more": book.Description)</p>
+                                    </div>
+                                    <div class=" d-flex justify-content-between">
+                                        <p class="card-text mb-0 mt-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <small class="text-muted">@book.Rate.ToString("0.0")</small>
+                                        </p>
+                                        <div>
+                                            <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@book.Id">
+                                                <i class="bi bi-ticket-detailed"></i>
+                                                Details
+                                            </a>
+                                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@book.Id">
+                                                <i class="bi bi-pencil-square"></i>
+                                                Edit
+                                            </a>
+                                            <a href="javascript:;" class="btn btn-danger js-delete" data-id="@book.Id">
+                                                <i class="bi bi-trash"></i>
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }   
+        </div>
+     }
+
+</div>
+@section Scripts{ 
+    <script>
+        //const { Toast } = require("../../wwwroot/lib/bootstrap/dist/js/bootstrap.bundle");
+
+        $(document).ready(function () {
+            $('.js-delete').on('click', function () {
+                var btn = $(this);
+                //var result = confirm('Are you sure that you need to delete this book');
+                bootbox.confirm({
+                    message: 'Are you sure that you need to delete this book',
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-outline-secondary'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: '/Book/Delete/' + btn.data('id'),
+                                success: function () {
+                                    btn.parents('.col-12').fadeOut();
+                                    toastr.success("Book deleted");
+                                },
+                                error: function () {
+                                    toastr.error('Something went wrong!');
+                                }
+                            });
+                        }
+                    }
+                });
+                
+            });
+        });
+    </script>
+}
