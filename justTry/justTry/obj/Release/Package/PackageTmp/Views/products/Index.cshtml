@@ -1,0 +1,63 @@
+﻿@model IEnumerable<justTry.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.brand.brand_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.category_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.model_year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.list_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product_new_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand.brand_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.category_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.model_year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.list_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_new_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.product_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.product_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.product_id })
+        </td>
+    </tr>
+}
+
+</table>

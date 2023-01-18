@@ -125,6 +125,10 @@
         "locales/bootstrap-datepicker.zh-CN.min.js",
         "locales/bootstrap-datepicker.zh-TW.min.js"
       ]
+    },
+    {
+      "library": "font-awesome@6.2.1",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }

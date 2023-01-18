@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "GettAll";
+
+    var employees = (List<MVC_DEMO_1.Models.Employee>)ViewBag.emplist;
+}
+
+<h2>All Data</h2>
+
+
+<hr />
+<a href="/Employee/Create" >Create new Employee</a>
+<hr />
+
+<table>
+    
+    <tr>
+        <th>
+            ID
+        </th>
+        <th> - </th>
+        <th>
+            Name
+        </th>
+    </tr>
+    
+   @{ 
+            foreach(var emp in employees)
+            {
+       <tr>
+           <td>@emp.ID</td>
+           <td> - </td>
+           <td>&ensp;@emp.Name</td>
+           <td> <a href="/Employee/Details/@emp.ID">&ensp;Select</a></td>
+           <td> <a href="/Employee/Edit/@emp.ID">&ensp;Edit</a></td>
+           <td> <a href="/Employee/Delete/@emp.ID">&ensp;Delete</a></td>
+
+
+       </tr>
+                
+            }
+    }
+    
+    
+</table>
+

@@ -23,5 +23,8 @@ namespace LibraryCRUD.Models
         public Author Author { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public ICollection<FavoriteBook> FavoriteBooks { get; set; }
+        public IEnumerable<UserAccount> UserAccounts { get; set; }
+
     }
 }

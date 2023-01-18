@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autoIdentity", "autoIdentity\autoIdentity.csproj", "{42644131-9E23-4C8B-8C9D-0BBDAEDBEF94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42644131-9E23-4C8B-8C9D-0BBDAEDBEF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42644131-9E23-4C8B-8C9D-0BBDAEDBEF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42644131-9E23-4C8B-8C9D-0BBDAEDBEF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42644131-9E23-4C8B-8C9D-0BBDAEDBEF94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1E80CDA-B814-4822-B265-E90886C41A47}
+	EndGlobalSection
+EndGlobal

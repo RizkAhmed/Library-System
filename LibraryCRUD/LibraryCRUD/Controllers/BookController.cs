@@ -1,5 +1,6 @@
 ﻿using LibraryCRUD.Models;
 using LibraryCRUD.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace LibraryCRUD.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,7 +22,6 @@ namespace LibraryCRUD.Controllers
         private int _maxCoverSize = 1048576;
         //private static IEnumerable<Author> Authors = _context.Authors.OrderBy(o => o.Name).ToListAsync();
         //private static IEnumerable<Category> Categories =  _context.categories.OrderBy(o => o.Name).ToListAsync();
-        
         public BookController(AppDbContext context, IToastNotification toastNotification)
         {
             _context = context;
@@ -45,7 +46,7 @@ namespace LibraryCRUD.Controllers
             }
             return false;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var books = await _context.books.Include(b => b.Author).Include(b => b.Category).OrderByDescending(o=>o.Rate).ToListAsync();
@@ -169,6 +170,8 @@ namespace LibraryCRUD.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult> Details(int? id)
         {

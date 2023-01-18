@@ -1,5 +1,6 @@
 ﻿using LibraryCRUD.Models;
 using LibraryCRUD.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace LibraryCRUD.Controllers
 {
+    [Authorize]
     public class AuthorController : Controller
     {
         private readonly AppDbContext _context;
@@ -64,6 +66,7 @@ namespace LibraryCRUD.Controllers
 
             return imgByteArr;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var authors = await _context.Authors.OrderBy(o => o.Name).ToListAsync();
@@ -163,6 +166,8 @@ namespace LibraryCRUD.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult>Details(int id)
         {

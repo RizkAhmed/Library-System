@@ -1,0 +1,5 @@
+C:\Users\RIZK\source\repos\EF3\new\obj\Debug\netcoreapp3.1\news.csproj.AssemblyReference.cache
+C:\Users\RIZK\source\repos\EF3\new\obj\Debug\netcoreapp3.1\news.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RIZK\source\repos\EF3\new\obj\Debug\netcoreapp3.1\news.AssemblyInfoInputs.cache
+C:\Users\RIZK\source\repos\EF3\new\obj\Debug\netcoreapp3.1\news.AssemblyInfo.cs
+C:\Users\RIZK\source\repos\EF3\new\obj\Debug\netcoreapp3.1\news.csproj.CoreCompileInputs.cache

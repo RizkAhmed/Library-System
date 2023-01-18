@@ -1,0 +1,14 @@
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.exe
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.deps.json
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.runtimeconfig.json
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.runtimeconfig.dev.json
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.dll
+C:\Users\RIZK\source\repos\First\First\bin\Debug\netcoreapp3.1\First.pdb
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.csproj.AssemblyReference.cache
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.AssemblyInfoInputs.cache
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.AssemblyInfo.cs
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.csproj.CoreCompileInputs.cache
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.dll
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.pdb
+C:\Users\RIZK\source\repos\First\First\obj\Debug\netcoreapp3.1\First.genruntimeconfig.cache

@@ -47,14 +47,18 @@
                                     <i class="bi bi-ticket-detailed"></i>
                                     Details
                                 </a>
-                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@author.Id">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                </a>
-                                <a href="javascript:;" class="btn btn-danger js-delete" data-id="@author.Id">
-                                    <i class="bi bi-trash"></i>
-                                    Delete
-                                </a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@author.Id">
+                                        <i class="bi bi-pencil-square"></i>
+                                        Edit
+                                    </a>
+                                    <a href="javascript:;" class="btn btn-danger js-delete" data-id="@author.Id">
+                                        <i class="bi bi-trash"></i>
+                                        Delete
+                                    </a>
+                                }
+
                             </div>
                         </div>
 

@@ -1,0 +1,68 @@
+﻿
+@{ string name = "Ahmed"; }
+@{ 
+
+    string filling;
+    if (DateTime.Now.Hour < 12)
+    {
+        filling = "Good Morning";
+
+    }
+    else
+    {
+        filling = "Good Evening";
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <p>Welcom @name</p>
+    <p>@filling</p>
+    <form action="" method="get">
+        <table>
+
+
+            <tr>
+                <td>User name</td>
+                <td> <input type="text" name="UserName" value="" /> </td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+                <td> <input type="password" name="Password" value="" /> </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="selection">
+                        <option value="1.png">Photo-1</option>
+                        <option value="2.png">Photo-2</option>
+                        <option value="3.jpg">Photo-3</option>
+                    </select>
+                </td>
+                <td> <input type="submit" value="Login" /> </td>
+            </tr>
+        </table>
+    </form>
+    @{
+        if (!Request.QueryString["UserName"].IsEmpty() & !Request.QueryString["Password"].IsEmpty())
+        {
+            string username = Request.QueryString["UserName"];
+            string password = Request.QueryString["password"];
+            string Path = "Images/" + Request["selection"];
+            <p> User name :@username</p>
+
+            <p> Password :@password</p>
+            <div >
+                <img src="@Path" alt="Alternate text" height="200" width="200" />
+            </div>
+        }
+
+
+    }
+
+
+</body>
+</html>

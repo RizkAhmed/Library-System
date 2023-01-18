@@ -1,0 +1,66 @@
+﻿@model MVC_DEMO_2.Models.product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.model_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.model_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.list_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.list_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_new_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_new_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand.brand_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand.brand_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
